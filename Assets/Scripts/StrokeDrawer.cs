@@ -11,6 +11,8 @@ public class StrokeDrawer : MonoBehaviour
     public bool eraserMode = false;
     public iOSBridgeStub bridge;
 
+    public Color brushColor = Color.green;
+
     private ARRaycastManager raycastManager;
     private List<ARRaycastHit> hits = new();
     private List<Vector3> currentStrokePoints = new();
@@ -19,6 +21,7 @@ public class StrokeDrawer : MonoBehaviour
     void Awake()
     {
         raycastManager = GetComponent<ARRaycastManager>();
+        brushColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.8f, 1f);
     }
 
     void Update()
@@ -74,6 +77,13 @@ public class StrokeDrawer : MonoBehaviour
         {
             GameObject point = Instantiate(strokePointPrefab, position, Quaternion.identity);
             point.tag = "StrokePoint";
+
+            var renderer = point.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material = new Material(renderer.material);
+                renderer.material.color = brushColor;
+            }
         }
         else
         {
@@ -95,7 +105,7 @@ public class StrokeDrawer : MonoBehaviour
 
         var stroke = new StrokeData
         {
-            color = "#FF00FF",
+            color = ColorUtility.ToHtmlStringRGB(brushColor),
             points = currentStrokePoints.ToArray()
         };
 
