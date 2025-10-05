@@ -1,0 +1,38 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Rr]ecords/
+UserSettings/
+sysinfo.txt
+
+# Cache & local packages
+Assets/Plugins/Editor/JetBrains*  
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.unityproj
+*.user
+*.pidb
+*.booproj
+*.svd
+
+# Crash/Profiler
+*.stacktrace
+*.dmp
+
+# Rider/VS caches
+.vs/
+.gradle/
+
+# Addressables/Streaming
+Assets/AddressableAssetsData/*/*.bin*
+
+# OS junk
+.DS_Store
+Thumbs.db
